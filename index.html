@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GiordanoMusic</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h2>Categorie</h2>
+      <ul>
+        <li onclick="filterCategory('Leon Faun')">Leon Faun</li>
+        <li onclick="filterCategory('Rilassante')">Rilassante</li>
+        <li onclick="filterCategory('Sfera Ebbasta')">Sfera Ebbasta</li>
+        <li onclick="filterCategory('Random')">Random</li>
+        <li onclick="resetFilter()">Tutte</li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <button id="toggle-menu" class="menu-toggle">☰ Menu</button>
+      <h1>GiordanoMusic - Brani disponibili</h1>
+      <div id="song-list" class="song-list"></div>
+    </main>
+  </div>
+
+  <footer class="music-player">
+    <div class="now-playing">
+      <div>
+        <div id="now-title" class="song-title">Nessun brano</div>
+        <div id="now-artist" class="song-artist"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSong()">⏮</button>
+      <button id="play-button" onclick="togglePlay()">▶︎·၊၊||၊|။|||| |</button>
+      <button onclick="nextSong()">⏭</button>
+    </div>
+
+    <div class="seekbar">
+      <input type="range" id="progress-bar" value="0" step="1" min="0" max="100" />
+    </div>
+  </footer>
+
+  <audio id="audio"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
