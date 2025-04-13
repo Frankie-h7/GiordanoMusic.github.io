@@ -22,7 +22,7 @@
 
     <main class="main-content">
       <button id="toggle-menu" class="menu-toggle">☰ Menu</button>
-      <h1>GiordanoMusic - Brani disponibili</h1>
+      <h1 id="Giord">GiordanoMusic</h1>
       <div id="song-list" class="song-list"></div>
     </main>
   </div>
@@ -45,6 +45,15 @@
       <input type="range" id="progress-bar" value="0" step="1" min="0" max="100" />
     </div>
   </footer>
+
+<!-- bloccato per desktop -->
+<div id="desktop-overlay" style="display: none;">
+  <div class="overlay-content">
+    <h2>Questa app è disponibile solo su dispositivi mobili 📱</h2>
+    <p>Scarica la versione mobile per usarla offline</p>
+    <a href="GiordanoMusic.zip" download class="download-btn">Scarica ZIP</a>
+  </div>
+</div>
 
   <audio id="audio"></audio>
   <script src="script.js"></script>

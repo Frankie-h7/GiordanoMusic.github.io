@@ -6,6 +6,12 @@ const songs = [
     file: "music/leonfaun/oh_cacchio.mp3"
   },
   {
+    title: "Prova",
+    artist: "Leon Faun",
+    category: "Leon Faun",
+    file: "music/leonfaun/prova.mp3"
+  },
+  {
     title: "Relax",
     artist: "Nature Sound",
     category: "Rilassante",
@@ -35,6 +41,11 @@ let currentIndex = 0;
 let filteredSongs = [...songs];
 
 renderSongs(filteredSongs);
+
+audioEl.addEventListener("ended", () => {
+  // Passa alla prossima canzone
+  nextSong();
+});
 
 // Volume fisso
 audioEl.volume = 0.8;
@@ -136,4 +147,16 @@ if ('serviceWorker' in navigator) {
       console.log('Registrazione Service Worker fallita:', error);
     });
   });
+
+  // Blocca per **tutto tranne mobile**
+  function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+  }
+  
+  window.addEventListener('load', () => {
+    if (!isMobileDevice()) {
+      document.getElementById('desktop-overlay').style.display = 'flex';
+    }
+
+});
 }
