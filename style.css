@@ -13,6 +13,97 @@
     flex-direction: column;
   }
   
+  /* bloccato per desktop */
+  #desktop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: none; /* verrà attivato da JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+  /* Sezione per ricevere consigli */
+  .feedback-section {
+    background-color: #1f1f1f;
+    padding: 0px;
+    margin-top: 0px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .feedback-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .feedback-section textarea {
+    width: 100%;
+    padding: 0px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #121212;
+    color: white;
+    resize: none;
+    font-size: 1rem;
+    margin-bottom: 0px;
+  }
+  
+  .feedback-section button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .feedback-section button:hover {
+    background-color: #444;
+  }
+/* Sezione per ricevere consigli */  
+  
+  #desktop-overlay .overlay-content {
+    max-width: 400px;
+  }
+  
+  .download-btn {
+    margin-top: 20px;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .download-btn:hover {
+    background-color: #e0e0e0;
+  }    
+
+   /* fa spazio sotto al titolo */
+   #Giord {
+    padding-bottom: 10px;
+  }
+
   .app-container {
     display: flex;
     flex: 1;
@@ -117,9 +208,10 @@
     accent-color: #ffffff;
   }
   
+  /* stile Menu */
   .menu-toggle {
     position: absolute;
-    top: 510px;
+    top: 81%;
     left: 15px;
     background-color: #000101;
     border: none;
@@ -153,47 +245,4 @@
       width: 100%;
       padding: 15px;
     }
-
-    /* fa spazio sotto al titolo */
-    #Giord {
-      padding-bottom: 10px;
-    }
-
-    /* bloccato per desktop */
-    #desktop-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      display: none; /* verrà attivato da JS */
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-    
-    #desktop-overlay .overlay-content {
-      max-width: 400px;
-    }
-    
-    .download-btn {
-      margin-top: 20px;
-      background-color: #fff;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      display: inline-block;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    
-    .download-btn:hover {
-      background-color: #e0e0e0;
-    }    
   }  
