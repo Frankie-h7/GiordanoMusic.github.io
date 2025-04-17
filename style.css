@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* toglie il flash blu dal mobile */
+    touch-action: manipulation; /* migliora interazione su dispositivi touch */
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   }
   
   body {
@@ -11,6 +15,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-user-select: none; /* Evita selezione testo su tap accidentali */
   }
   
   /* Overlay che appare quando sei offline */
@@ -61,8 +66,9 @@
     flex-direction: row;
   }
   
+  /* Sidebar Animata */
   .sidebar {
-    width: 200px;
+    width: 300px;
     background-color: #1f1f1f;
     padding: 20px;
     border-right: 1px solid #333;
@@ -83,12 +89,47 @@
     cursor: pointer;
     border-radius: 6px;
     transition: background 0.2s;
+    user-select: none;
   }
   
   .sidebar li:hover {
     background-color: #2a2a2a;
   }
+
+  /* Animazione Rimbalzo Sidebar */
+  .sidebar li:active {
+    animation: bounceListItem 0.4s ease;
+  }
   
+  @keyframes bounceListItem {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(0.95);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Rimpicciolisce le playlist per adattarle allo schermo mobile */
+  @media (max-width: 768px) {
+    .sidebar li {
+      font-size: 0.80rem; /* oppure 14px, o anche meno */
+      white-space: nowrap;  /* evita che il testo vada a capo */
+      overflow: hidden;     /* nasconde l'eventuale parte in più */
+      text-overflow: ellipsis; /* aggiunge "..." se il testo è troppo lungo */
+    }
+  }
+
+  /* Contenuti Principali */
   .main-content {
     flex: 1;
     padding: 20px;
@@ -112,6 +153,29 @@
   
   .song-card:hover {
     background-color: #292929;
+  }
+
+  /* Animazione Rimbalzo Sidebar */
+  .song-card:active {
+    animation: bounceCardItem 0.4s ease;
+  }
+  
+  @keyframes bounceCardItem {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(0.95);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
   
   .song-card h3 {
@@ -147,7 +211,18 @@
     color: white;
     cursor: pointer;
     margin: 0 5px;
+    border-radius: 6px; /* utile per evitare bordi strani su iOS */
+  -webkit-tap-highlight-color: transparent; /* evita flash blu su mobile */
+  touch-action: manipulation; /* migliora interazione su dispositivi touch */
+  transition: color 0.2s, background 0.2s;
   }
+
+  /* Effetto visivo al tocco */
+.controls button:active,
+.controls button:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
   
   .controls button:hover {
     color: #ffffffa8;
@@ -165,6 +240,19 @@
     border: 1px solid #ffffff;
   }
   
+  /* Messaggio: Usa una connessione stabile */
+  .conn-message {
+    color: #fff;
+    font-size: 16px;
+      font-family: serif;
+    margin-right: auto; /* Spinge il bottone a destra */
+  }
+
+  /* Lascia spazio tra la riga del Menu e il Titolo */
+  .top-bar {
+    margin-bottom: 5px
+  }
+
   /* stile Menu */
   /* Mini barra in alto per contenere il bottone */
   .menu-bar {
@@ -200,6 +288,13 @@
     transform: scale(1.05);
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    .menu-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+  }
+  
 /* Aggiusta il padding del contenuto sotto */
 .main-content {
   padding-top: 10px; /* spazio per la barra */
