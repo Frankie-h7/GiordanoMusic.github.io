@@ -8,7 +8,6 @@ self.addEventListener('install', (event) => {
           '/script.js',
           '/manifest.json',
           '/GiordanoMusic.png',
-          '/music',
           // Aggiungi anche tutti gli altri file che devono essere disponibili offline
         ]);
       })
