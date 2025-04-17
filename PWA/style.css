@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Overlay che appare quando sei offline */
+#offline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: none; /* Sarà mostrato tramite JS quando offline */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+.overlay-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.overlay-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.overlay-content p {
+  font-size: 1.2rem;
+}
+  
+  #desktop-overlay .overlay-content {
+    max-width: 400px;
+  }
+
+   /* fa spazio sotto al titolo */
+   #Giord {
+    padding-bottom: 10px;
+  }
+
+  .app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-right: 1px solid #333;
+    transition: left 0.3s;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  
+  .sidebar li:hover {
+    background-color: #2a2a2a;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+  }
+  
+  .song-card {
+    background-color: #1f1f1f;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .song-card:hover {
+    background-color: #292929;
+  }
+  
+  .song-card h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .song-card p {
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+  
+  .music-player {
+    background-color: #1e1e1e;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #333;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .now-playing .song-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+  
+  .controls button {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .controls button:hover {
+    color: #ffffffa8;
+  }
+  
+  .seekbar input[type="range"] {
+    width: 180px;
+    accent-color: #ffffff;
+  }
+
+  #search-bar {
+    font-size: 1rem;
+    background-color: #1f1f1f;
+    color: white;
+    border: 1px solid #ffffff;
+  }
+  
+  /* stile Menu */
+  /* Mini barra in alto per contenere il bottone */
+  .menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #121212;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    z-index: 1000; /* Assicurati che la barra sia sopra tutto */
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Bottone menu stilizzato */
+  .menu-toggle {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #ffffffdd;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 1010; /* Assicurati che il bottone sia sopra la sidebar */
+    margin-left: 10px;
+  }
+  
+  .menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
+
+/* Aggiusta il padding del contenuto sotto */
+.main-content {
+  padding-top: 10px; /* spazio per la barra */
+}
+  
+  @media (max-width: 768px) {
+    .app-container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: -220px;
+      width: 200px;
+      height: 100%;
+      z-index: 9;
+    }
+  
+    .sidebar.open {
+      left: 0;
+    }
+  
+    .main-content {
+      width: 100%;
+      padding: 15px;
+    }
+  }  

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GiordanoMusic</title>
+  <link rel="icon" href="music/GiordanoMusic.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h2>Playlist 🎶</h2>
+
+      <input 
+  type="text" 
+  id="search-bar" 
+  placeholder="Cerca una canzone..." 
+  style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 8px;">
+
+      <ul>
+        <li onclick="filterCategory('Leon Faun')">Leon Faun</li>
+        <li onclick="filterCategory('Nn')">Nn</li>
+        <li onclick="filterCategory('Sfera Ebbasta')">Sfera Ebbasta</li>
+        <li onclick="filterCategory('Random')">Random</li>
+        <li onclick="resetFilter()">Tutte</li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <main class="main-content">
+        <div class="top-bar">Usa una connessione stabile
+          <button class="menu-toggle">☰ Menu</button>
+        </div>
+      
+        <h1 id="Giord">GiordanoMusic 🎧</h1>
+      <div id="song-list" class="song-list"></div>
+    </main>
+  </div>
+
+  <footer class="music-player">
+    <div class="now-playing">
+      <div>
+        <div id="now-title" class="song-title">Nessun brano</div>
+        <div id="now-artist" class="song-artist"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSong()">⏮</button>
+      <button id="play-button" onclick="togglePlay()">▶︎·၊၊||၊|။|||| |</button>
+      <button onclick="nextSong()">⏭</button>
+    </div>
+
+    <div class="seekbar">
+      <input type="range" id="progress-bar" value="0" step="1" min="0" max="100" />
+    </div>
+  </footer>
+
+<!-- Overlay che appare quando sei offline -->
+<div id="offline-overlay" style="display: none;">
+  <div class="overlay-content">
+    <h2>Sei offline 🚫</h2>
+    <p>Non puoi ascoltare musica senza una connessione a Internet.</p>
+    <p>╭∩╮( •̀_•́ )╭∩╮</p>
+  </div>
+</div>
+
+  <audio id="audio"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
