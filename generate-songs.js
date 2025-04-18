@@ -4,19 +4,36 @@ const path = require('path');
 const musicDir = path.join(__dirname, 'music');
 const outputFile = path.join(__dirname, 'songs.js');
 
-const files = fs.readdirSync(musicDir).filter(file => file.endsWith('.mp3'));
+function walkDir(dir, callback) {
+  fs.readdirSync(dir).forEach(file => {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      walkDir(fullPath, callback);
+    } else {
+      callback(fullPath);
+    }
+  });
+}
 
-const songs = files.map(file => ({
-  title: path.basename(file, '.mp3'),
-  artist: 'Autore', // puoi personalizzare se leggi da tag o nome file
-  category: 'Generale', // oppure categorizza per sottocartelle, se vuoi
-  file: `music/${file}`
-}));
+const songs = [];
 
-const content = `// Questo file è generato automaticamente
-export const songs = ${JSON.stringify(songs, null, 2)};
-`;
+walkDir(musicDir, filePath => {
+  if (filePath.endsWith('.mp3')) {
+    const relativePath = path.relative(__dirname, filePath).replace(/\\/g, '/');
+    const fileName = path.basename(filePath, '.mp3');
+    const parts = relativePath.split('/');
+    const category = parts[1] || "Generale"; // es. "music/💔 Emo Rap & Sentimenti/brano.mp3" -> categoria = "💔 Emo Rap & Sentimenti"
 
-fs.writeFileSync(outputFile, content);
+    songs.push({
+      title: fileName,
+      artist: "Autore",
+      category: category,
+      file: `./${relativePath}`
+    });
+  }
+});
 
-console.log(`✅ songs.js generato con ${songs.length} brani.`);
+const fileContent = `export const songs = ${JSON.stringify(songs, null, 2)};`;
+
+fs.writeFileSync(outputFile, fileContent);
+console.log(`✅ File 'songs.js' generato con ${songs.length} brani`);
