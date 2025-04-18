@@ -52,8 +52,8 @@ Realizzata da [@Frankie-h7](https://github.com/Frankie-h7) – *Appassionato di 
 
 ## ֎🇦🇮 Progetti futuri
 
-Sto pensando di realizzare una piattaforma dove far girare il mio ChatBot personale "GiordanoGPT", al mometo e solo un idea.
-Questa stessa descrizione è stata realizzata con "GiordanoGPT" (il bot non ha nulla a che vedere col modello GPT, e solo un nome).
+Sto pensando di realizzare una piattaforma dove far girare il mio ChatBot personale "GiordanoGPT", al mometo è solo un idea.
+Questa stessa descrizione è stata realizzata con "GiordanoGPT" (il bot non ha nulla a che vedere col modello GPT, è solo un nome).
 
 ---
 
