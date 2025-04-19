@@ -57,4 +57,4 @@ Questa stessa descrizione è stata realizzata con "GiordanoGPT" (il bot non ha n
 
 ---
 
-**🟢 Provala ora:** [Vai al sito] https://frankie-h7.github.io/GiordanoMusic](https://frankie-h7.github.io/GiordanoMusic.github.io/
+**🟢 Provala ora:** [Vai al sito] https://frankie-h7.github.io/GiordanoMusic <---> https://frankie-h7.github.io/GiordanoMusic.github.io/
