@@ -136,16 +136,18 @@
     overflow-y: auto;
   }
   
+  /* Lista Canzoni */
   .song-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
+    gap: 10px;
   }
   
+  /* FlashCard Musicale */
   .song-card {
     background-color: #1f1f1f;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
     cursor: pointer;
     transition: background 0.2s;
@@ -155,7 +157,7 @@
     background-color: #292929;
   }
 
-  /* Animazione Rimbalzo Sidebar */
+  /* Animazione Rimbalzo FlashCard */
   .song-card:active {
     animation: bounceCardItem 0.4s ease;
   }
@@ -178,16 +180,25 @@
     }
   }
   
+  /* Titolo Canzonne sulla FlashCard */
   .song-card h3 {
-    font-size: 1rem;
+    font-size: 12px;
     margin-bottom: 5px;
+    white-space: nowrap;  /* evita che il testo vada a capo */
+      overflow: hidden;     /* nasconde l'eventuale parte in più */
+      text-overflow: ellipsis; /* aggiunge "..." se il testo è troppo lungo */
   }
   
+  /* Artista sulla FlashCard */
   .song-card p {
-    font-size: 0.85rem;
+    font-size: 0.60rem;
     color: #aaa;
+    white-space: nowrap;  /* evita che il testo vada a capo */
+      overflow: hidden;     /* nasconde l'eventuale parte in più */
+      text-overflow: ellipsis; /* aggiunge "..." se il testo è troppo lungo */
   }
   
+  /* Tutta la barra del footer, del Player Musicale */
   .music-player {
     background-color: #1e1e1e;
     padding: 10px 15px;
@@ -195,17 +206,82 @@
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid #333;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* nowrap impedisce che gli elementi vadano a capo, wrap fa il contrario */
     gap: 10px;
   }
+
+  /* Footer Responsive per Mobile, si rimpicciolisce */
+  @media (max-width: 600px) {
+    .music-player .song-artist {
+      font-size: 0.5rem;
+    }
   
+    .music-player .controls button {
+      font-size: 0.8rem;
+      padding: 0px 0px;
+    }
+  
+    @media (max-width: 600px) {
+      .music-player .seekbar input[type="range"] {
+        height: 5px;
+        width: 100px; /* o clamp(80px, 20vw, 150px) */
+      }
+    }
+    
+  }@media (max-width: 600px) {
+    .music-player .seekbar input[type="range"] {
+      height: 5px;
+      max-width: 100px; /* oppure 80%, oppure clamp() */
+    }
+  }
+
+  /* Titolo e Artista della Canzone */
   .now-playing .song-title {
     font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  .now-playing .song-artist {
+    font-size: 0.6rem;
+  }
+
+  .song-title {
+    display: block;         /* o block */
+    max-width: 250px;       /* o width: 200px; oppure 100% se il genitore è limitato */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
     font-size: 0.95rem;
+    vertical-align: middle; /* se serve allineamento */
+  }
+  .song-artist{
+    display: block;         /* o block */
+    max-width: 250px;       /* o width: 200px; oppure 100% se il genitore è limitato */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 0.95rem;
+    vertical-align: middle;  /* se serve allineamento */
+  }
+
+  /* Titolo Della canzone Rimpicciolito per Mobile */
+  @media (max-width: 600px) {
+    .music-player .song-title {
+      font-size: 0.6rem;
+    }
+    .song-title{
+      max-width: 90px;
+    }
+    .song-artist{
+      max-width: 90px;
+    }
   }
   
+  /* Bottoni Play, Pausa e Skip */
   .controls button {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background: none;
     border: none;
     color: white;
@@ -215,6 +291,35 @@
   -webkit-tap-highlight-color: transparent; /* evita flash blu su mobile */
   touch-action: manipulation; /* migliora interazione su dispositivi touch */
   transition: color 0.2s, background 0.2s;
+  }
+
+  /* Animazioni Rimbalzo bottoni Play/Pausa e Skip Next e Perv */
+  #play-button:active {
+    animation: bounceCardItem 0.4s ease;
+  }
+  #pervSong:active {
+    animation: bounceCardItem 0.4s ease;
+  }
+  #nextSong:active {
+    animation: bounceCardItem 0.4s ease;
+  }
+  
+  @keyframes bounceCardItem {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(0.95);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   /* Effetto visivo al tocco */
@@ -228,16 +333,25 @@
     color: #ffffffa8;
   }
   
+  /* Barra di Riproduzione Musicale */
   .seekbar input[type="range"] {
     width: 180px;
     accent-color: #ffffff;
   }
 
+  /* Barra di Ricerca Canzoni */
   #search-bar {
     font-size: 1rem;
     background-color: #1f1f1f;
     color: white;
     border: 1px solid #ffffff;
+  }
+
+  /* Search Bar Responsive per Mobile */
+  @media (max-width: 600px) {
+    #search-bar {
+      font-size: 10px;
+    }
   }
   
   /* Messaggio: Usa una connessione stabile */
@@ -253,8 +367,22 @@
     margin-bottom: 5px
   }
 
+  /* Messaggio "Usa una buona connessione" in corsivo, più piccolo */
+  @media (max-width: 600px) {
+    .conn-message {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+  /* Titolo GiordanoMusic Responsive per Mobile */
+  #Giord {
+       font-size: 25px;
+    }
+  }
+
   /* stile Menu */
   /* Mini barra in alto per contenere il bottone */
+  /* IMPORTANTE!!! .menu-bar non funziona, è per contenere uno stile di prova */
   .menu-bar {
     position: fixed;
     top: 0;
@@ -267,7 +395,7 @@
     padding-left: 10px;
     z-index: 1000; /* Assicurati che la barra sia sopra tutto */
     border-bottom: 1px solid #333;
-  }
+  } /* | Non funziona | */
   
   /* Bottone menu stilizzato */
   .menu-toggle {
@@ -282,8 +410,15 @@
     z-index: 1010; /* Assicurati che il bottone sia sopra la sidebar */
     margin-left: 10px;
   }
+
+  /* Bottone Menu più piccolo per mobile */
+  @media (max-width: 600px) {
+    .menu-toggle {
+            font-size: 16px;
+          }
+    }
   
-  .menu-toggle:hover {
+  .menu-toggle:active {
     background-color: rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
   }
@@ -299,7 +434,165 @@
 .main-content {
   padding-top: 10px; /* spazio per la barra */
 }
+
+/* Stile Pop Up Aggiornamento Versione */
+.update-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Nero con trasparenza */
+  backdrop-filter: blur(8px); /* Effetto vetro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Arial', sans-serif;
+}
+
+.popup-content {
+  background: rgba(20, 20, 20, 0.9); /* Nero semi-trasparente */
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  color: #fff;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 1.5em;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.popup-content p {
+  margin-bottom: 25px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.9;
+}
+
+#updateButton {
+  background: linear-gradient(135deg, #444, #222);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+#updateButton:hover {
+  background: linear-gradient(135deg, #555, #333);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#updateButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-popup:hover {
+  color: #fff;
+}
+
+.update-info {
+  font-size: 0.9em;
+  color: #aaa;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+} /* Fine Pop Up Aggiornamento Versione = 1.0.1*/
+
+/* Feedback Tattile per Mobile, evita flash blu */
+#updateButton {
+  -webkit-tap-highlight-color: transparent; /* Rimuove il blu su tap (mobile) */
+}
+
+#updateButton:active {
+  transform: scale(0.98); /* Effetto "premuto" */
+} /* Fine Feedback Tattile */
+
+/* Stile Pop Up Aggiornamento Versione Otimizzato Per Mobile */
+@media (max-width: 768px) {
+  .update-popup {
+    backdrop-filter: blur(5px); /* Riduci blur per performance mobile */
+  }
+
+  .popup-content {
+    width: 85%;
+    max-width: 320px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .popup-content h2 {
+    font-size: 1.3em;
+    padding-bottom: 8px;
+  }
+
+  .popup-content p {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+  }
+
+  #updateButton {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .close-popup {
+    top: 10px;
+    right: 10px;
+    font-size: 1.3em;
+  }
+
+  .update-info {
+    font-size: 0.8em;
+  }
+}
+
+/* Ottimizzazione extra per schermi molto piccoli [cellulari Androis & IOS]*/
+@media (max-width: 480px) {
+  .popup-content {
+    width: 90%;
+    max-width: 280px;
+    padding: 15px;
+  }
+
+  .popup-content h2 {
+    font-size: 1.2em;
+  }
+
+  #updateButton {
+    padding: 8px 15px;
+  }
+} /* Fine Stile Mobile per Pop Up Versione */
   
+  /* Sidebar Ottimizzata per Mobile */
   @media (max-width: 768px) {
     .app-container {
       flex-direction: column;

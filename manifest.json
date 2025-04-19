@@ -5,15 +5,15 @@
     "start_url": "/GiordanoMusic.github.io/",
     "display": "standalone",
     "background_color": "#121212",
-    "theme_color": "#1db954",
+    "theme_color": "#121212",
     "icons": [
       {
-        "src": "GiordanoMusic.png",
+        "src": "GiordanoMusic192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "GiordanoMusic.png",
+        "src": "GiordanoMusic512.png",
         "sizes": "512x512",
         "type": "image/png"
       }

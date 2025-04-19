@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GiordanoMusic</title>
   <link rel="icon" href="music/GiordanoMusic.ico" type="image/x-icon">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
@@ -52,9 +53,9 @@
     </div>
 
     <div class="controls">
-      <button onclick="prevSong()">⏮</button>
+      <button id="pervSong" onclick="prevSong()">⏮</button>
       <button id="play-button" onclick="togglePlay()">▶︎·၊၊||၊|။|||| |</button>
-      <button onclick="nextSong()">⏭</button>
+      <button id="nextSong" onclick="nextSong()">⏭</button>
     </div>
 
     <div class="seekbar">
@@ -72,6 +73,8 @@
 </div>
 
   <audio id="audio"></audio>
+  <script src="songs.js"></script>
   <script src="script.js"></script>
+  <script src="version-checker.js"></script>  <!-- Controlla se è la versione aggiornata -->
 </body>
 </html>
