@@ -5,7 +5,7 @@ const ASSETS = [
           '/style.css',
           '/script.js',
           '/songs.js',
-          '/version-checker.js',  // Aggiungi il nuovo script
+          '/version-checker.js',  // Controllo Versione, al momento: 1.0.1
           '/manifest.json',
           '/GiordanoMusic512.png',
           '/GiordanoMusic192.png',
