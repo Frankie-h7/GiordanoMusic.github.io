@@ -37,7 +37,8 @@ Presente su GitHub Pages https://github.com/Frankie-h7/GiordanoMusic.github.io
 
 ## 📲 APK Android (opzionale)
 
-Ci sarà presto una versione APK disponibile per Android, per IOS, Per Windows e per Mac.
+GiordanoMusic è accessibile in versione APK disponibile per Android, per IOS (solo versione Web), Per Windows e per Mac.
+➡️ [Clicca qui per scaricare l'APK] https://github.com/Frankie-h7/GiordanoMusic.github.io/releases/download/v1.0.0/GiordanoMusic.apk
 
 ## 📌 Prossimi sviluppi
 
@@ -57,4 +58,4 @@ Questa stessa descrizione è stata realizzata con "GiordanoGPT" (il bot non ha n
 
 ---
 
-**🟢 Provala ora:** [Vai al sito] https://frankie-h7.github.io/GiordanoMusic](https://frankie-h7.github.io/GiordanoMusic.github.io/
+**🟢 Provala ora:** [Vai al sito] https://frankie-h7.github.io/GiordanoMusic <---> https://frankie-h7.github.io/GiordanoMusic.github.io/
