@@ -83,6 +83,34 @@ function playSelected(index) {
   artistEl.textContent = song.artist;
 }
 
+// 👉 Media Session API
+function setupMediaSession(song) {
+  if (!song || !('mediaSession' in navigator)) return;
+  
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: song.title || "Titolo sconosciuto",
+      artist: song.artist || "Artista sconosciuto",
+      album: song.category || "",
+      artwork: [
+        {
+          src: song.artwork || "https://i.imgur.com/VNvhXcJ.png",
+          sizes: "512x512",
+          type: "image/png"
+        }
+      ]
+    });
+
+    navigator.mediaSession.setActionHandler("play", () => audioEl.play());
+    navigator.mediaSession.setActionHandler("pause", () => audioEl.pause());
+    navigator.mediaSession.setActionHandler("nexttrack", nextSong);
+    navigator.mediaSession.setActionHandler("previoustrack", prevSong);
+  } catch (e) {
+    console.error("Error setting up Media Session:", e);
+  }
+}
+
+// Cambia il pulsante Play ▶︎ in Pausa ❚❚
 function togglePlay() {
   const playButton = document.getElementById("play-button");
   if (audioEl.paused) {

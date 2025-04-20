@@ -9,6 +9,7 @@
   }
   
   body {
+    padding-bottom: 50px; /* Altezza del player + margine extra */
     font-family: 'Segoe UI', sans-serif;
     background-color: #121212;
     color: #fff;
@@ -200,6 +201,12 @@
   
   /* Tutta la barra del footer, del Player Musicale */
   .music-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
     background-color: #1e1e1e;
     padding: 10px 15px;
     display: flex;
