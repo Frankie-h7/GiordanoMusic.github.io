@@ -236,7 +236,7 @@
 @media (max-width: 768px) {
   .user-profile {
     padding: 10px 12px;
-    margin: 0 5px 15px;
+    margin: 0 0px 15px;
   }
   
   #profileImage {
