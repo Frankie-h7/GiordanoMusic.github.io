@@ -35,7 +35,7 @@ function checkForUpdate() {
         console.log('[Version Checker] Nuova versione disponibile!');
         showUpdatePopup(latestVersion);
       } else {
-        console.log('[Version Checker] L'app è aggiornata');
+        console.log("[Version Checker] L'app è aggiornata");
       }
     })
     .catch(err => {
