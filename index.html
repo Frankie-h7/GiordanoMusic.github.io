@@ -12,6 +12,14 @@
 <body>
   <div class="app-container">
     <aside class="sidebar">
+
+      <!-- Dentro il tuo <div class="sidebar">, sopra la sezione playlist -->
+        <!-- PROFILO UTENTE | nella SideBar -->
+<div class="user-profile" id="userProfile">
+  <img src="img/default-profile.png" alt="Profilo" id="profileImage">
+  <span id="usernameDisplay">Nome Utente</span>
+</div> <!-- FINE PROFILO UTENTE | nella Sidebar -->
+
       <h2>Playlist 🎶</h2>
 
       <input 
@@ -62,6 +70,28 @@
       <input type="range" id="progress-bar" value="0" step="1" min="0" max="100" />
     </div>
   </footer>
+
+  <!-- Overlay registrazione -->
+   <!-- INIZIO FINESTRA PROFILO UTENTE -->
+  <div class="user-overlay" id="userOverlay">
+    <div class="user-modal">
+      <h2>Personalizza Profilo</h2>
+      <form id="profileForm">
+        <input type="text" id="inputUsername" placeholder="Il tuo nome" maxlength="20">
+        
+        <div class="avatar-options">
+          <p>Scegli un avatar:</p>
+          <div class="avatar-grid">
+            <img src="img/avatar1.png" data-avatar="avatar1" class="avatar-option">
+            <img src="img/avatar2.png" data-avatar="avatar2" class="avatar-option">
+            <img src="img/avatar3.png" data-avatar="avatar3" class="avatar-option">
+          </div>
+        </div>
+        
+        <button type="submit">Salva</button>
+      </form>
+    </div>
+  </div> <!-- FINE FINESTRA PROFILO UTENTE -->
 
 <!-- Overlay che appare quando sei offline -->
 <div id="offline-overlay" style="display: none;">

@@ -15,6 +15,84 @@ audioEl.addEventListener("ended", () => {
   nextSong();
 });
 
+// ... [il tuo codice esistente: variabili, funzioni player, etc.] ...
+
+/* ====================================================
+   GESTIONE UTENTE (aggiungi QUESTA SEZIONE nel mezzo)
+   ==================================================== */
+// Elementi UI
+// Gestione Profilo Utente
+const userProfile = document.getElementById('userProfile');
+const userOverlay = document.getElementById('userOverlay');
+const profileForm = document.getElementById('profileForm');
+const profileImage = document.getElementById('profileImage');
+const usernameDisplay = document.getElementById('usernameDisplay');
+
+// Carica dati utente
+function loadUser() {
+  const saved = JSON.parse(localStorage.getItem('userProfile')) || {
+    username: "Guest",
+    avatar: "img/default-profile.png"
+  };
+  profileImage.src = saved.avatar;
+  usernameDisplay.textContent = saved.username;
+  return saved;
+}
+
+let currentUser = loadUser();
+
+// Apertura modale
+userProfile.addEventListener('click', () => {
+  userOverlay.classList.add('active');
+  document.getElementById('inputUsername').value = currentUser.username;
+  
+  // Seleziona l'avatar corrente
+  document.querySelectorAll('.avatar-option').forEach(img => {
+    if (img.src.includes(currentUser.avatar.replace('img/', ''))) {
+      img.classList.add('selected');
+    }
+  });
+});
+
+// Selezione avatar
+document.querySelectorAll('.avatar-option').forEach(img => {
+  img.addEventListener('click', function() {
+    document.querySelectorAll('.avatar-option').forEach(i => i.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+// Salvataggio
+profileForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const username = document.getElementById('inputUsername').value.trim() || "Guest";
+  const selected = document.querySelector('.avatar-option.selected') || 
+                   document.querySelector('.avatar-option');
+  
+  currentUser = {
+    username: username,
+    avatar: selected.src
+  };
+  
+  localStorage.setItem('userProfile', JSON.stringify(currentUser));
+  loadUser();
+  userOverlay.classList.remove('active');
+});
+
+// Chiudi cliccando sull'overlay
+userOverlay.addEventListener('click', (e) => {
+  if (e.target === userOverlay) {
+    userOverlay.classList.remove('active');
+  }
+});
+
+/* ====================================================
+   FINE SEZIONE UTENTE (prosegui con il tuo codice esistente)
+   ==================================================== */
+
+// ... [il resto del tuo codice: event listener, service worker, etc.] ...
+
 window.addEventListener('load', () => {
   const offlineOverlay = document.getElementById('offline-overlay');
 
