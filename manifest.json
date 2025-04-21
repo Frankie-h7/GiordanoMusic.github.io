@@ -8,12 +8,12 @@
     "theme_color": "#121212",
     "icons": [
       {
-        "src": "GiordanoMusic192.png",
+        "src": "img/logo/GiordanoMusic192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "GiordanoMusic512.png",
+        "src": "img/logo/GiordanoMusic512.png",
         "sizes": "512x512",
         "type": "image/png"
       }
