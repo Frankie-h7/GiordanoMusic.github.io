@@ -7,9 +7,9 @@ const ASSETS = [
           '/songs.js',
           '/version-checker.js',  // Controllo Versione, al momento: 1.0.1
           '/manifest.json',
-          '/img/logo/GiordanoMusic512.png',
-          '/img/logo/GiordanoMusic192.png',
-          '/img/logo/GiordanoMusic.ico',
+          '/GiordanoMusic512.png',
+          '/GiordanoMusic192.png',
+          '/GiordanoMusic.ico',
           // Aggiungi anche tutti gli altri file che devono essere disponibili offline
         ];
 
