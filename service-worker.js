@@ -5,11 +5,20 @@ const ASSETS = [
           '/style.css',
           '/script.js',
           '/songs.js',
+          // ... altri file ...
+          '/songs/drip-songs.js',
+          '/songs/sfera-songs.js',
+          '/songs/milano-songs.js',
+          '/songs/faun-songs.js',
+          '/songs/emo-songs.js',
+          '/songs/collab-songs.js',
+          '/songs/shiva-songs.js',
+          // ... altri file ...
           '/version-checker.js',  // Controllo Versione, al momento: 1.0.1
           '/manifest.json',
           '/GiordanoMusic512.png',
           '/GiordanoMusic192.png',
-          '/GiordanoMusic.ico',
+          '/music/GiordanoMusic.ico', // Percorso corretto per l'icona
           // Aggiungi anche tutti gli altri file che devono essere disponibili offline
         ];
 

@@ -5,11 +5,24 @@ const titleEl = document.getElementById("now-title");
 const artistEl = document.getElementById("now-artist");
 const progressBar = document.getElementById("progress-bar");
 
+// Unisci tutte le playlist
+const allSongs = [
+  ...songs,                      // Dal vecchio songs.js
+  ...(window.dripSongs || []),   // Da drip-songs.js
+  ...(window.sferaSongs || []),  // Da sfera-songs.js
+  ...(window.milanoSongs || []), // Da milano-songs.js
+  ...(window.faunSongs || []),   // Da faun-songs.js
+  ...(window.emoSongs || []),    // Da emo-songs.js
+  ...(window.collabSongs || []), // Da collab-songs.js
+  ...(window.shivaSongs || []),  // Da shiva-songs.js
+];
+
 let currentIndex = 0;
-let filteredSongs = [...songs];
+let filteredSongs = [...allSongs];  // Usa allSongs invece di songs
 
 renderSongs(filteredSongs);
 
+// Riproduzione infinita delle Playlist
 audioEl.addEventListener("ended", () => {
   // Passa alla prossima canzone
   nextSong();
@@ -123,7 +136,7 @@ const searchBar = document.getElementById("search-bar");
 
 searchBar.addEventListener("input", () => {
   const query = searchBar.value.toLowerCase();
-  filteredSongs = songs.filter(song =>
+  filteredSongs = allSongs.filter(song =>
     song.title.toLowerCase().includes(query) ||
     song.artist.toLowerCase().includes(query)
   );
@@ -216,14 +229,14 @@ function prevSong() {
 }
 
 function filterCategory(category) {
-  filteredSongs = songs.filter(song => song.category === category);
+  filteredSongs = allSongs.filter(song => song.category === category);
   renderSongs(filteredSongs);
   currentIndex = 0;
   resetNowPlaying();
 }
 
 function resetFilter() {
-  filteredSongs = [...songs];
+  filteredSongs = [...allSongs];
   renderSongs(filteredSongs);
   currentIndex = 0;
   resetNowPlaying();
@@ -254,13 +267,51 @@ toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
 
+// Verifica caricamento playlist
+window.addEventListener('load', () => {
+  if (!window.dripSongs) console.warn("drip-songs.js non caricato");
+  if (!window.sferaSongs) console.warn("sfera-songs.js non caricato");
+  
+  // DEBUG: mostra tutte le canzoni caricate
+  console.log("Canzoni totali caricate:", allSongs.length);
+});
+
 // Service Worker funzionante
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-      console.log('Service Worker registrato con successo:', registration);
-    }).catch((error) => {
-      console.log('Registrazione Service Worker fallita:', error);
+// Registrazione Service Worker (versione migliorata)
+const registerServiceWorker = async () => {
+  try {
+    const registration = await navigator.serviceWorker.register('/service-worker.js', {
+      scope: '/',
+      updateViaCache: 'none' // Importante per aggiornamenti immediati
     });
-  });
+    
+    console.log('✅ Service Worker registrato con scope:', registration.scope);
+
+    // Controlla aggiornamenti
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'activated') {
+          console.log('🔄 Nuova versione disponibile!');
+          // Opzionale: Notifica l'utente per ricaricare
+          if (confirm('Nuovo aggiornamento disponibile! Ricaricare ora?')) {
+            window.location.reload();
+          }
+        }
+      });
+    });
+
+  } catch (error) {
+    console.error('❌ Registrazione fallita:', error);
+  }
+};
+
+// Esegui solo se supportato
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', registerServiceWorker);
+  
+  // Controlla aggiornamenti ogni 24 ore
+  setInterval(() => {
+    navigator.serviceWorker.getRegistration()?.update();
+  }, 86400000);
 }
