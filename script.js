@@ -280,11 +280,14 @@ window.addEventListener('load', () => {
 // Registrazione Service Worker (versione migliorata)
 const registerServiceWorker = async () => {
   try {
-    const registration = await navigator.serviceWorker.register('/service-worker.js', {
-      scope: '/',
-      updateViaCache: 'none' // Importante per aggiornamenti immediati
+    const registration = await navigator.serviceWorker.register(
+      '/GiordanoMusic.github.io/service-worker.js', 
+      {
+        scope: '/GiordanoMusic.github.io/',
+        updateViaCache: 'none' // Importante per aggiornamenti immediati
     });
     
+    // ... resto del codice invariato ...
     console.log('✅ Service Worker registrato con scope:', registration.scope);
 
     // Controlla aggiornamenti

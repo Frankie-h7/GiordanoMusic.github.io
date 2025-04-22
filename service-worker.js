@@ -1,24 +1,24 @@
 const CACHE_NAME = 'giordanomusic-cache-v1';  // Aggiungi un suffisso di versione
 const ASSETS = [
-          '/',
-          '/index.html',
-          '/style.css',
-          '/script.js',
-          '/songs.js',
+          '/GiordanoMusic.github.io/',
+          '/GiordanoMusic.github.io/index.html',
+          '/GiordanoMusic.github.io/style.css',
+          '/GiordanoMusic.github.io/script.js',
+          '/GiordanoMusic.github.io/songs.js',
           // ... altri file ...
-          '/songs/drip-songs.js',
-          '/songs/sfera-songs.js',
-          '/songs/milano-songs.js',
-          '/songs/faun-songs.js',
-          '/songs/emo-songs.js',
-          '/songs/collab-songs.js',
-          '/songs/shiva-songs.js',
+          '/GiordanoMusic.github.io/songs/drip-songs.js',
+          '/GiordanoMusic.github.io/songs/sfera-songs.js',
+          '/GiordanoMusic.github.io/songs/milano-songs.js',
+          '/GiordanoMusic.github.io/songs/faun-songs.js',
+          '/GiordanoMusic.github.io/songs/emo-songs.js',
+          '/GiordanoMusic.github.io/songs/collab-songs.js',
+          '/GiordanoMusic.github.io/songs/shiva-songs.js',
           // ... altri file ...
-          '/version-checker.js',  // Controllo Versione, al momento: 1.0.1
-          '/manifest.json',
-          '/GiordanoMusic512.png',
-          '/GiordanoMusic192.png',
-          '/music/GiordanoMusic.ico', // Percorso corretto per l'icona
+          '/GiordanoMusic.github.io/version-checker.js',  // Controllo Versione, al momento: 1.0.1
+          '/GiordanoMusic.github.io/manifest.json',
+          '/GiordanoMusic.github.io/GiordanoMusic512.png',
+          '/GiordanoMusic.github.io/GiordanoMusic192.png',
+          '/GiordanoMusic.github.io/music/GiordanoMusic.ico', // Percorso corretto per l'icona
           // Aggiungi anche tutti gli altri file che devono essere disponibili offline
         ];
 
