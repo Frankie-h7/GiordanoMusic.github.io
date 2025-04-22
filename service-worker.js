@@ -12,7 +12,8 @@ const CORE_ASSETS = [
   '/GiordanoMusic.github.io/manifest.json',
   '/GiordanoMusic.github.io/version-checker.js',
   '/GiordanoMusic.github.io/GiordanoMusic192.png',
-  '/GiordanoMusic.github.io/GiordanoMusic512.png'
+  '/GiordanoMusic.github.io/GiordanoMusic512.png',
+  '/GiordanoMusic.github.io/music/GiordanoMusic.ico'
 ];
 
 // INSTALLAZIONE (cache dei file essenziali)
