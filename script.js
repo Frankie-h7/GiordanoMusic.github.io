@@ -28,6 +28,23 @@ audioEl.addEventListener("ended", () => {
   nextSong();
 });
 
+// ------------------------
+// Aggiungi questa funzione
+function precacheSong(songUrl) {
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({
+      action: 'precache-audio',
+      url: songUrl
+    });
+  }
+}
+
+// Esempio quando l'utente mette un brano nei preferiti
+function addToFavorites(song) {
+  precacheSong(song.file);
+  // ... altro codice ...
+} // ----------------------
+
 // ... [il tuo codice esistente: variabili, funzioni player, etc.] ...
 
 /* ====================================================
